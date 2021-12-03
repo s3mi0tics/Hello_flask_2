@@ -10,15 +10,19 @@ def dojo():
     return "Dojo!"
 
 
-@app.route('/say/<name>')
+@app.route('/say/<string:name>')
 def hi(name):
     print(name)
-    return "Hi " + name + "!"
+    return "Hi " + name.capitalize + "!"
 
-@app.route('/repeat/<int:number>/<name>')
-def repeat_n_times(number, name):
-    print(number, name)
-    return name * number
+@app.route('/repeat/<int:number>/<string:word>')
+def repeat_n_times(number, word):
+    output = ''
+
+    for i in range (0,number):
+        output += f'<p>{word}<p>'
+    print(number, word)
+    return output
 
 # @app.route('/<anything_else>')
 # def sorry():
